@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Analyzer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+            padding: 0;
+            margin: 0;
+            min-width: 270px;
+            min-height: 320px;
+            position: relative; /* Make sure absolutely positioned icon is relative to body */
+        }
+        .icon-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            opacity: 0.20; /* Slightly more visible */
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 20px 18px 16px 18px;
+            background: none; /* Remove background so icon shows through */
+        }
+        h1 {
+            font-size: 1.2em;
+            color: #22223b;
+            margin-bottom: 18px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #3a3a3a;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 7px 8px;
+            border: 1px solid #bfc9d1;
+            border-radius: 5px;
+            font-size: 1em;
+            background: #f4f7fa;
+            transition: border 0.2s;
+        }
+        input[type="number"]:focus, select:focus {
+            border: 1.5px solid #4f8cff;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 11px 0;
+            background: linear-gradient(90deg, #4f8cff 0%, #38b6ff 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(79,140,255,0.08);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        button:disabled {
+            background: #bfc9d1;
+            color: #f4f7fa;
+            cursor: not-allowed;
+        }
+        .footer {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 0.93em;
+            color: #7a7a7a;
+        }
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+        .row > * {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <img src="icons/Chess.png" class="icon-bg" alt="ChessAnalyzer Icon" />
+    <div class="container">
+        <h1>Chess Analyzer</h1>
+        <div class="form-group row">
+            <div>
+                <label for="depth">Depth</label>
+                <input type="number" id="depth" min="10" max="15" value="15">
+            </div>
+            <div>
+                <label for="highlightColor">Color</label>
+                <select id="highlightColor">
+                    <option value="rgba(0, 191, 255, 0.7)">Blue</option>
+                    <option value="rgba(255, 255, 0, 0.5)">Yellow</option>
+                    <option value="rgba(0, 255, 0, 0.5)">Green</option>
+                    <option value="rgba(255, 0, 0, 0.5)">Red</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="moveSide">Show Best Move For</label>
+            <select id="moveSide">
+                <option value="white">White</option>
+                <option value="black">Black</option>
+                <option value="both">Both Sides</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="engineSource">Engine Source</label>
+            <select id="engineSource">
+                <option value="chesscom">'chess.com' Internal Engine</option>
+                <option value="api">'stockfish.online' API</option>
+            </select>
+        </div>
+        <button id="toggleExtension">Disable Extension</button>
+        <div class="footer">&copy; 2025 Chess Analyzer</div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

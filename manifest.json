@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "Chess Analyzer",
+    "version": "1.1",
+    "description": "Get the best chess moves using chess.com internal engine or stockfish.online API.",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "icons/Chess.png",
+        "48": "icons/Chess.png",
+        "128": "icons/Chess.png"
+    }
+}
